@@ -33,14 +33,11 @@ for( i <- 1 to (colNames.length - 2)){
     .withColumnRenamed(x+"Tmp", x)
 }
 
-println("Dataset Loaded and processed")
-
 var trainDF = df.filter( $"ORIGIN".like("train") )
 trainDF = trainDF.drop(trainDF.col("ORIGIN"))
 var testDF = df.filter( $"ORIGIN".like("test") )
 testDF = testDF.drop(testDF.col("ORIGIN"))
 
-println("Train and test Split")
 
 val features = colNames.slice(1, colNames.length - 1)
 val label = colNames(colNames.length - 1)
